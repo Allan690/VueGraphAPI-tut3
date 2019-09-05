@@ -1,17 +1,25 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+     {{ display }}
+     <github-followers-component users-name="allan690" v-on:user-filter="customEventHandler"></github-followers-component>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
+import GithubFollowersComponent from "@/components/GithubFollowers";
 export default {
   name: 'app',
+  data() {
+    return { display: ''}
+  },
   components: {
-    HelloWorld
+    GithubFollowersComponent
+  },
+  methods: {
+    customEventHandler(data) {
+      this.display = `${data} was selected`;
+    }
   }
 }
 </script>
